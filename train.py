@@ -41,8 +41,8 @@ print "Dataset Loaded"
 mylog = open('repo/logs/'+NAME+'.log','w')
 tic = time()
 no_optim = 0
-total_epoch = 3#300
-train_epoch_best_loss = 1#100.
+total_epoch = sys.argv[0]
+train_epoch_best_loss = sys.argv[1]
 
 print "Starting Training"
 
