@@ -136,8 +136,8 @@ class TTAFrame():
     def load(self, path):
         self.net.load_state_dict(torch.load(path))
         
-#source = 'repo/dataset/test/'
-source = 'repo/dataset/valid/'
+#source = 'dataset/test/'
+source = 'dataset/valid/'
 val = os.listdir(source)
 solver = TTAFrame(DinkNet34)
 solver.load('repo/weights/log01_dink34.th')
