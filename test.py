@@ -134,13 +134,13 @@ class TTAFrame():
     def load(self, path):
         self.net.load_state_dict(torch.load(path))
         
-#source = 'dataset/test/'
-source = 'dataset/valid/'
+#source = 'repo/dataset/test/'
+source = 'repo/dataset/valid/'
 val = os.listdir(source)
 solver = TTAFrame(DinkNet34)
-solver.load('weights/log01_dink34.th')
+solver.load('repo/weights/log01_dink34.th')
 tic = time()
-target = 'submits/log01_dink34/'
+target = 'repo/submits/log01_dink34/'
 os.mkdir(target)
 for i,name in enumerate(val):
     if i%10 == 0:
