@@ -42,6 +42,9 @@ tic = time()
 no_optim = 0
 total_epoch = 300
 train_epoch_best_loss = 100.
+
+print "Starting Training"
+
 for epoch in range(1, total_epoch + 1):
     data_loader_iter = iter(data_loader)
     train_epoch_loss = 0
