@@ -41,8 +41,8 @@ print "Dataset Loaded"
 mylog = open('repo/logs/'+NAME+'.log','w')
 tic = time()
 no_optim = 0
-total_epoch = 300
-train_epoch_best_loss = 100.
+total_epoch = 3#300
+train_epoch_best_loss = 1#100.
 
 print "Starting Training"
 
@@ -69,7 +69,7 @@ for epoch in range(1, total_epoch + 1):
     else:
         no_optim = 0
         train_epoch_best_loss = train_epoch_loss
-        solver.save('weights/'+NAME+'.th')
+        solver.save('repo/weights/'+NAME+'.th')
     if no_optim > 6:
         print >> mylog, 'early stop at %d epoch' % epoch
         print 'early stop at %d epoch' % epoch
@@ -77,7 +77,7 @@ for epoch in range(1, total_epoch + 1):
     if no_optim > 3:
         if solver.old_lr < 5e-7:
             break
-        solver.load('weights/'+NAME+'.th')
+        solver.load('repo/weights/'+NAME+'.th')
         solver.update_lr(5.0, factor = True, mylog = mylog)
     mylog.flush()
     
