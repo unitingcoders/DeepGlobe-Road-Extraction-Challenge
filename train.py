@@ -6,6 +6,7 @@ from torch.autograd import Variable as V
 import cv2
 import os
 import numpy as np
+from tqdm import tqdm
 
 from time import time
 
@@ -46,16 +47,13 @@ train_epoch_best_loss = 100.
 print "Starting Training"
 
 for epoch in range(1, total_epoch + 1):
-    print "1"
     data_loader_iter = iter(data_loader)
     train_epoch_loss = 0
-    for img, mask in data_loader_iter:
-        print "2"
+    for img, mask in tqdm(data_loader_iter):
         solver.set_input(img, mask)
         train_loss = solver.optimize()
         train_epoch_loss += train_loss
-        print "3"
-    print "4"
+
     train_epoch_loss /= len(data_loader_iter)
     print >> mylog, '********'
     print >> mylog, 'epoch:',epoch,'    time:',int(time()-tic)
