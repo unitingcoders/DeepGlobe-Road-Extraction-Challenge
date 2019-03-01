@@ -26,12 +26,16 @@ BATCHSIZE_PER_CARD = 4
 solver = MyFrame(DinkNet34, dice_bce_loss, 2e-4)
 batchsize = torch.cuda.device_count() * BATCHSIZE_PER_CARD
 
+print "Loading Dataset"
+
 dataset = ImageFolder(trainlist, ROOT)
 data_loader = torch.utils.data.DataLoader(
     dataset,
     batch_size=batchsize,
     shuffle=True,
     num_workers=4)
+
+print "Dataset Loaded"
 
 mylog = open('repo/logs/'+NAME+'.log','w')
 tic = time()
